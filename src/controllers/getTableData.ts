@@ -19,6 +19,7 @@ export const getTableData = async (req: Request, res: Response) => {
 
   try {
     let rows;
+    // Based on current route get full table or mixed relationship table
     if (table !== 'role') {
       ({ rows } = await getFullTable(tableViews[table]));
     } else {

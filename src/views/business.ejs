@@ -6,37 +6,39 @@
   <link rel="stylesheet" href="./style/style.css" />
   <body>
     <%- include('./partials/header') %>
-    <h2>This is business page</h2>
-    <table>
-      <thead>
-        <th scope="col">Business Name</th>
-        <th scope="col">Foundation Year</th>
-        <th scope="col">Industry</th>
-        <th scope="col">Starting Capital</th>
-        <th scope="col">Headquarters</th>
-      </thead>
-      <tbody>
-          <% rows.forEach(row => { %>
-          <tr>
-            <th scope="row" style="text-align: left;">
-              <%= row.business_name %>
-            </th>
-            <td style="text-align: center;">
-              <%= row.foundation_year %>
-            </td>
-            <td>
-              <%= row.industry %>
-            </td>
-            <td style="text-align: left;">
-              $
-              <%= row.starting_capital %>
-            </td>
-              <td>
-              <%= row.headquarters %>
+    <div id="table-container">
+      <table>
+        <caption>Registered Businesses</caption>
+        <thead>
+          <th scope="col">Business Name</th>
+          <th scope="col">Foundation Year</th>
+          <th scope="col">Industry</th>
+          <th scope="col">Starting Capital</th>
+          <th scope="col">Headquarters</th>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+            <tr>
+              <th scope="row" style="text-align: left;">
+                <%= row.business_name %>
+              </th>
+              <td style="text-align: center;">
+                <%= row.foundation_year %>
               </td>
-          </tr>
-        <% }); %>
-      </tbody>
-    </table>
+              <td>
+                <%= row.industry %>
+              </td>
+              <td style="text-align: left;">
+                $
+                <%= row.starting_capital %>
+              </td>
+                <td>
+                <%= row.headquarters %>
+                </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>

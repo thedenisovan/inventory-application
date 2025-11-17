@@ -13,7 +13,7 @@ export async function getRelationshipTable() {
     INNER JOIN business
     ON entrepreneur.id = business.entrepreneur_id
     INNER JOIN role
-    ON role.buisness_id = business.id;
+    ON role.business_id = business.id;
   `);
 
   return { rows };

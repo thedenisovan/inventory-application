@@ -6,28 +6,30 @@
   <link rel="stylesheet" href="./style/style.css" />
   <body>
     <%- include('./partials/header') %>
-    <h2>This is role page</h2>
-    <table>
-      <thead>
-        <th scope="col">Name</th>
-        <th scope="col">Business name</th>
-        <th scope="col">Role</th>
-      </thead>
-      <tbody>
-          <% rows.forEach(row => { %>
-          <tr>
-            <th scope="row" style="text-align: left;">
-              <%= row.name %>
-            </th>
-            <td style="text-align: center;">
-              <%= row.business_name %>
-            </td>
-            <td>
-              <%= row.role %>
-            </td>
-          </tr>
-        <% }); %>
-      </tbody>
-    </table>
+    <div id="table-container">
+      <table>
+        <caption>Business Roles & Relationships</caption>
+        <thead>
+          <th scope="col">Name</th>
+          <th scope="col">Business name</th>
+          <th scope="col">Role</th>
+        </thead>
+        <tbody>
+            <% rows.forEach(row => { %>
+            <tr>
+              <th scope="row" style="text-align: left;">
+                <%= row.name %>
+              </th>
+              <td style="text-align: center;">
+                <%= row.business_name %>
+              </td>
+              <td>
+                <%= row.role %>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
   </body>
 </html>

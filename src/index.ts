@@ -13,7 +13,6 @@ app.use(express.static(path.join(import.meta.dirname, 'public')));
 // For parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (_req, res) => res.render('entrepreneur'));
 app.use('/', tablePage);
 
 app.get('{*splat}', function (_req, res) {
