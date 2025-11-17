@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { indexPage } from './routes/indexPage.ts';
+import { tablePage } from './routes/tablePage.ts';
 
 const app = express();
 const PORT = 3030;
@@ -13,7 +13,8 @@ app.use(express.static(path.join(import.meta.dirname, 'public')));
 // For parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', indexPage);
+app.get('/', (req, res) => res.render('entrepreneur'));
+app.use('/', tablePage);
 
 app.listen(PORT, '0.0.0.0', () =>
   console.log(`Listening to http://localhost:${PORT}`)
