@@ -1,5 +1,6 @@
 import type { Request, Response } from 'express';
 import { getFullTable } from '../db/query.ts';
+import { getRelationshipTable } from '../db/query.ts';
 
 // Return table based on current users url
 export const getTableData = async (req: Request, res: Response) => {
@@ -17,7 +18,13 @@ export const getTableData = async (req: Request, res: Response) => {
   }
 
   try {
-    const { rows } = await getFullTable(tableViews[table]);
+    let rows;
+    if (table !== 'role') {
+      ({ rows } = await getFullTable(tableViews[table]));
+    } else {
+      ({ rows } = await getRelationshipTable());
+    }
+    // Render view based on req.params value
     res.render(tableViews[table], { rows });
   } catch (err) {
     res.render('404');

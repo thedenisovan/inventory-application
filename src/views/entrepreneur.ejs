@@ -7,5 +7,27 @@
   <body>
     <%- include('./partials/header') %>
     <h2>This is entrepreneur page</h2>
+    <table>
+      <thead>
+        <th scope="col">Name</th>
+        <th scope="col">Net Worth(USD Billion)</th>
+        <th scope="col">Date of Birth</th>
+      </thead>
+      <tbody>
+          <% rows.forEach(row => { %>
+          <tr>
+            <th scope="row" style="text-align: left;">
+              <%= row.name %>
+            </th>
+            <td style="text-align: center;">
+              <%= row.net_worth %>
+            </td>
+            <td>
+              <%= row.date_of_birth %>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
   </body>
 </html>

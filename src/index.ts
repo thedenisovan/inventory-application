@@ -13,8 +13,12 @@ app.use(express.static(path.join(import.meta.dirname, 'public')));
 // For parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => res.render('entrepreneur'));
+app.get('/', (_req, res) => res.render('entrepreneur'));
 app.use('/', tablePage);
+
+app.get('{*splat}', function (_req, res) {
+  res.render('404');
+});
 
 app.listen(PORT, '0.0.0.0', () =>
   console.log(`Listening to http://localhost:${PORT}`)
