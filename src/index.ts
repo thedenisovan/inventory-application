@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { tablePage } from './routes/tablePage.ts';
+import { indexPage } from './routes/indexPage.ts';
 
 const app = express();
 const PORT = 3030;
@@ -13,7 +14,8 @@ app.use(express.static(path.join(import.meta.dirname, 'public')));
 // For parsing application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/', tablePage);
+app.use('/', indexPage);
+app.use('/view', tablePage);
 
 app.get('{*splat}', function (_req, res) {
   res.render('404');
