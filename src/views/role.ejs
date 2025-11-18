@@ -13,6 +13,7 @@
           <th scope="col">Name</th>
           <th scope="col">Business name</th>
           <th scope="col">Role</th>
+          <th scope="col">Action</th>
         </thead>
         <tbody>
             <% rows.forEach(row => { %>
@@ -25,6 +26,9 @@
               </td>
               <td>
                 <%= row.role %>
+              </td>
+              <td>
+                <a style="font-weight: bold; color: green" href="id/<%= row.id %>">View</a>
               </td>
             </tr>
           <% }); %>

@@ -18,6 +18,7 @@ app.use('/', indexPage);
 app.use('/view', tablePage);
 
 app.get('{*splat}', function (_req, res) {
+  res.status(404);
   res.render('404');
 });
 

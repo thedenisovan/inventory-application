@@ -15,6 +15,7 @@
           <th scope="col">Industry</th>
           <th scope="col">Starting Capital</th>
           <th scope="col">Headquarters</th>
+          <th scope="col">Action</th>
         </thead>
         <tbody>
             <% rows.forEach(row => { %>
@@ -32,9 +33,12 @@
                 $
                 <%= row.starting_capital %>
               </td>
-                <td>
+              <td>
                 <%= row.headquarters %>
-                </td>
+              </td>
+              <td>
+                <a style="font-weight: bold; color: green" href="id/<%= row.entrepreneur_id %>">View</a>
+              </td>
             </tr>
           <% }); %>
         </tbody>

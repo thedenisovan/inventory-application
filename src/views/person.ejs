@@ -8,13 +8,14 @@
     <%- include('./partials/header') %>
     <div id="table-container">
       <table>
-        <caption>Entrepreneur Directory</caption>
+        <caption>Entrepreneur Information</caption>
         <thead>
           <th scope="col">Name</th>
-          <th scope="col">Net Worth(USD Billion)</th>
+          <th scope="col">Business</th>
+          <th scope="col">role</th>
           <th scope="col">Nationality</th>
           <th scope="col">Date of Birth</th>
-          <th scope="col">Action</th>
+          <th scope="col">Net Worth(USD Billion)</th>
         </thead>
         <tbody>
             <% rows.forEach(row => { %>
@@ -22,8 +23,11 @@
               <th scope="row">
                 <%= row.name %>
               </th>
+              <th >
+                <%= row.business_name %>
+              </th>
               <td>
-                <%= row.net_worth %>
+                <%= row.role %>
               </td>
               <td>
                 <%= row.nationality%>
@@ -32,7 +36,7 @@
                 <%= row.date_of_birth %>
               </td>
               <td>
-                <a style="font-weight: bold; color: green" href="id/<%= row.id %>">View</a>
+                <%= row.net_worth %>
               </td>
             </tr>
           <% }); %>
