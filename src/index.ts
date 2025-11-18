@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { tablePage } from './routes/tablePage.ts';
 import { indexPage } from './routes/indexPage.ts';
+import { newPersonForm } from './routes/newPersonForm.ts';
 
 const app = express();
 const PORT = 3030;
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexPage);
 app.use('/view', tablePage);
+app.use('/new', newPersonForm);
 
 app.get('{*splat}', function (_req, res) {
   res.status(404);

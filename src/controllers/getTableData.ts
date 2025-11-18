@@ -27,7 +27,9 @@ export const getTableData = async (req: Request, res: Response) => {
       ({ rows } = await db.getRelationshipTable());
     }
     // Render view based on req.params value
-    res.render(tableViews[table], { rows });
+    res.render(tableViews[table], {
+      rows,
+    });
   } catch (err) {
     res.render('404');
     res.status(404);

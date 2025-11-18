@@ -16,10 +16,11 @@
           <th scope="col">Nationality</th>
           <th scope="col">Date of Birth</th>
           <th scope="col">Net Worth(USD Billion)</th>
+          <th scope="col">Action</th>
         </thead>
         <tbody>
             <% rows.forEach(row => { %>
-            <tr>
+            <tr class="person-row">
               <th scope="row">
                 <%= row.name %>
               </th>
@@ -37,6 +38,10 @@
               </td>
               <td>
                 <%= row.net_worth %>
+              </td>
+              <td>
+                <button class="edit-btn">Edit</button>
+                <button class="delete-btn">Delete</button>
               </td>
             </tr>
           <% }); %>

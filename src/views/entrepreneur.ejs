@@ -32,11 +32,22 @@
                 <%= row.date_of_birth %>
               </td>
               <td>
-                <a style="font-weight: bold; color: green" href="id/<%= row.id %>">View</a>
+                <a class="add-btn" href="id/<%= row.id %>">View</a>
               </td>
             </tr>
           <% }); %>
         </tbody>
+        <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td style="text-align: left">
+            <a class="add-btn" href="/new">Add</a>
+          </td>
+        </tr>
+      </tfoot>
       </table>
     </div>
   </body>

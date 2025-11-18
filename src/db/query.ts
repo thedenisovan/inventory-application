@@ -22,7 +22,7 @@ export async function getRelationshipTable() {
 export async function getSingleTableRow(entrepreneurId: string) {
   const { rows } = await pool.query(
     `
-      SELECT name, business_name, role, nationality, date_of_birth, net_worth
+      SELECT DISTINCT name, business_name, role, nationality, date_of_birth, net_worth
       FROM entrepreneur
       INNER JOIN business
       ON entrepreneur.id = business.entrepreneur_id
