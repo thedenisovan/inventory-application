@@ -75,6 +75,11 @@ th {
   height: 3rem;
 }
 
+tr:last-of-type td,
+tr:last-of-type th {
+  border-bottom: none !important;
+}
+
 tr:hover {
   cursor: pointer;
   background-color: rgb(248, 246, 246);

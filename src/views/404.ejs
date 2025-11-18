@@ -3,9 +3,21 @@
   <meta charset="UTF-8" />
   <title>Founder Hub</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="./style/style.css" />
+  <link rel="stylesheet" href="/style/style.css" />
   <body>
     <%- include('./partials/header') %>
-    <h2>This is Error page</h2>
+    <div id="index-page">
+      <h2>
+        Whoops you came to unrecognized url
+      </h2>
+      <p>
+        From here you can go to
+        <a style="color: rgb(62, 104, 184)" href="/view/entrepreneur"
+          >entrepreneurs</a
+        >
+        page or
+        <a style="color: rgb(62, 104, 184)" href="/view/business">businesses</a>
+        page.
+      </p>
   </body>
 </html>
