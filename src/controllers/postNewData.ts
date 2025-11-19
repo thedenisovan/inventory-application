@@ -32,7 +32,7 @@ export const postNewData = [
 
     try {
       await postRelationTable(req.body);
-      res.redirect('/entrepreneur');
+      res.redirect('/view/entrepreneur');
     } catch {
       res.redirect('404');
       res.status(400);

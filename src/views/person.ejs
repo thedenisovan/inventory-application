@@ -41,7 +41,9 @@
               </td>
               <td>
                 <button class="edit-btn">Edit</button>
-                <button class="delete-btn">Delete</button>
+                <form action="<%= id %>/delete" method="post">
+                  <button type="submit" class="delete-btn" onclick="hi()">Delete</button>
+                </form>
               </td>
             </tr>
           <% }); %>
@@ -49,4 +51,18 @@
       </table>
     </div>
   </body>
+  <script>
+    import 'dotenv/config';
+    
+    function hi() {
+      const promptReturn = prompt('Please enter password to delete his row.');
+
+      if (promptReturn === process.env.PASSWORD) {
+        alert('You have deleted this row.')
+      } else {
+        alert('Wrong password.')
+      }
+    }
+
+  </script>
 </html>

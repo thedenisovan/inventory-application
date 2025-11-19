@@ -107,3 +107,31 @@ async function getNewId(table: string): Promise<number> {
 
   return Number(rows[0].count + 1);
 }
+
+export async function deleteFromTable(entrepreneurId: string) {
+  const id = Number(entrepreneurId);
+
+  await pool.query(
+    `
+      DELETE FROM entrepreneur
+      WHERE id = $1
+    `,
+    [id]
+  );
+
+  await pool.query(
+    `
+      DELETE FROM business
+      WHERE entrepreneur_id = $1
+    `,
+    [entrepreneurId]
+  );
+
+  await pool.query(
+    `
+      DELETE FROM role
+      WHERE entrepreneur_id = $1
+    `,
+    [entrepreneurId]
+  );
+}

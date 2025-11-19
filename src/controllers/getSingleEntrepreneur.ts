@@ -11,7 +11,7 @@ export const getSingleEntrepreneur = async (req: Request, res: Response) => {
   }
   try {
     const { rows } = await db.getSingleTableRow(id);
-    res.render('person', { rows });
+    res.render('person', { rows, id });
   } catch (err) {
     res.render('404');
     res.status(404);
