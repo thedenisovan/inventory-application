@@ -105,5 +105,5 @@ export async function postRelationTable(body: PostData) {
 async function getNewId(table: string): Promise<number> {
   const { rows } = await pool.query(`SELECT MAX(id) AS count FROM ${table}`);
 
-  return Number(rows[0].count) + 1;
+  return Number(rows[0].count + 1);
 }

@@ -95,6 +95,14 @@
         </div>
       </div>
       <button type="submit">Add</button>
+      <% if (locals.errors) {%>
+      <ul>
+        <% errors.forEach(function(error) { %>
+          <li style="color:red">*<%= error.msg %></li>
+        <% }); %>
+      </ul>
+    <% } %>
     </form>
+
   </body>
 </html>
