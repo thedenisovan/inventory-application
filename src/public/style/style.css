@@ -111,6 +111,42 @@ tbody tr:hover {
   color: red;
 }
 
+form {
+  align-items: center;
+  background-color: white;
+  max-width: 700px;
+
+  border-radius: 8px;
+  margin: 3rem auto 0 auto;
+  box-shadow: 0 0 15px rgb(233, 231, 231);
+  gap: 1rem;
+}
+
+form h2 {
+  font-weight: 400;
+}
+
+form,
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+input,
+select {
+  width: 240px;
+  height: 2rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 2rem;
+}
+
+#hq {
+  width: 510px;
+}
+
 /* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,

@@ -6,6 +6,95 @@
   <link rel="stylesheet" href="/style/style.css" />
   <body>
     <%- include('./partials/header') %>
-    <h2>new person form</h2>
+    <form action="/new" method="post">
+      <h2><span style="color: rgb(62, 104, 184)">Entrepreneur</span> Data</h2>
+
+      <div class="input-group">
+        <div class="input-container">
+          <label for="first-name">First Name</label>
+          <input required type="text" name="firstName" id="first-name" />
+        </div>
+        <div class="input-container">
+          <label for="last-name">Last Name</label>
+          <input required type="text" name="lastName" id="last-name" />
+        </div>
+      </div>
+      <div class="input-group">
+        <%- include('./partials/countryDropdown') %>
+        <div class="input-container">
+          <label for="date-of-birth">Date of birth</label>
+          <input
+            required
+            type="date"
+            name="dateOfBirth"
+            max="2025-06-01"
+            id="date-of-birth"
+          />
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-container">
+          <label for="net-wort">Net Worth(billions USD)</label>
+          <input
+            required
+            type="number"
+            min="0"
+            max="1000"
+            name="netWorth"
+            id="net-wort"
+          />
+        </div>
+        <div class="input-container">
+          <div class="input-container">
+            <label for="role">Role In Company</label>
+            <input required type="text" name="roleInCOmpany" id="role" />
+          </div>
+        </div>
+      </div>
+
+      <h2><span style="color: rgb(62, 104, 184)">Company</span> Data</h2>
+
+      <div class="input-group">
+        <div class="input-container">
+          <label for="business-name">Company Name</label>
+          <input required type="text" name="businessName" id="business-name" />
+        </div>
+
+        <div class="input-container">
+          <label for="business-industry">Industry Name</label>
+          <input required type="text" name="industry" id="business-industry" />
+        </div>
+      </div>
+      <div class="input-group">
+        <div class="input-container">
+          <label for="foundation-year">Foundation Year</label>
+          <input
+            required
+            type="number"
+            name="foundationYear"
+            max="2025"
+            id="foundation-year"
+          />
+        </div>
+        <div class="input-container">
+          <label for="start-capital">Starting Capital</label>
+          <input
+            required
+            type="number"
+            min="0"
+            id="start-capital"
+            name="startingCapital"
+          />
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="input-container">
+          <label for="hq">Headquarter Location</label>
+          <input required type="text" name="hqLocation" id="hq" />
+        </div>
+      </div>
+      <button type="submit">Add</button>
+    </form>
   </body>
 </html>
