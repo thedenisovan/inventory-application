@@ -107,6 +107,10 @@ tbody tr:hover {
   color: green;
 }
 
+.add-btn-last {
+  font-size: 1.3rem;
+}
+
 .delete-btn {
   color: red;
 }

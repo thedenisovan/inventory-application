@@ -1,6 +1,20 @@
 import { pool } from './pool.ts';
 import type { QueryResultRow } from 'pg';
 
+export interface PostData {
+  firstName: string;
+  lastName: string;
+  country: string;
+  dateOfBirth: string;
+  netWorth: string;
+  roleInCOmpany: string;
+  businessName: string;
+  industry: string;
+  foundationYear: string;
+  startingCapital: string;
+  hqLocation: string;
+}
+
 export async function getFullTable(tableName: string): Promise<QueryResultRow> {
   const { rows } = await pool.query(`SELECT * FROM ${tableName}`);
   return { rows };
@@ -34,4 +48,62 @@ export async function getSingleTableRow(entrepreneurId: string) {
   );
 
   return { rows };
+}
+
+async function postInToEntrepreneur(body: PostData, newIdx: number) {
+  const name = body.firstName + ' ' + body.lastName;
+
+  await pool.query(
+    `
+      INSERT INTO entrepreneur (name, net_worth,  nationality, date_of_birth, main_business_id)
+      VALUES ($1, $2, $3, $4, $5)
+    `,
+    [
+      name,
+      Number(body.netWorth),
+      body.country,
+      body.dateOfBirth,
+      Number(newIdx),
+    ]
+  );
+}
+
+async function postInToBusiness(body: PostData, newIdx: number) {
+  await pool.query(
+    `
+      INSERT INTO business (business_name, foundation_year, industry, starting_capital, headquarters, entrepreneur_id)
+      VALUES ($1, $2, $3, $4, $5, $6)
+    `,
+    [
+      body.businessName,
+      Number(body.foundationYear),
+      body.industry,
+      Number(body.startingCapital),
+      body.hqLocation,
+      newIdx,
+    ]
+  );
+}
+
+export async function postRelationTable(body: PostData) {
+  const entrepreneurIdx = await getNewId('entrepreneur');
+  const businessIdx = await getNewId('business');
+
+  await postInToEntrepreneur(body, businessIdx);
+  await postInToBusiness(body, entrepreneurIdx);
+
+  await pool.query(
+    `
+      INSERT INTO role (role, entrepreneur_id, business_id)
+      VALUES ($1, $2, $3)
+    `,
+    [body.roleInCOmpany, entrepreneurIdx, businessIdx]
+  );
+}
+
+// Gets id of new business and entrepreneur to insert them in relationship table
+async function getNewId(table: string): Promise<number> {
+  const { rows } = await pool.query(`SELECT MAX(id) AS count FROM ${table}`);
+
+  return Number(rows[0].count) + 1;
 }
