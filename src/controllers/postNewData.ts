@@ -1,4 +1,4 @@
-import { postRelationTable } from '../db/query.ts';
+import { postRelationTable } from '../db/query.js';
 import type { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
 

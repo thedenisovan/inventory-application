@@ -1,8 +1,8 @@
 import express from 'express';
 import path from 'path';
-import { tablePage } from './routes/tablePage.ts';
-import { indexPage } from './routes/indexPage.ts';
-import { newPersonForm } from './routes/newPersonForm.ts';
+import { tablePage } from './routes/tablePage.js';
+import { indexPage } from './routes/indexPage.js';
+import { newPersonForm } from './routes/newPersonForm.js';
 
 const app = express();
 const PORT = 3030;

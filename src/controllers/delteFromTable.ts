@@ -1,4 +1,4 @@
-import { deleteFromTable } from '../db/query.ts';
+import { deleteFromTable } from '../db/query.js';
 import type { Request, Response } from 'express';
 
 export async function postDeleteFromTable(req: Request, res: Response) {

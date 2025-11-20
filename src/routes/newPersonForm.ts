@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { postNewData } from '../controllers/postNewData.ts';
+import { postNewData } from '../controllers/postNewData.js';
 
 export const newPersonForm = Router();
 

@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import * as db from '../db/query.ts';
+import * as db from '../db/query.js';
 
 export const getSingleEntrepreneur = async (req: Request, res: Response) => {
   let { id } = req.params;

@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import * as db from '../db/query.ts';
+import * as db from '../db/query.js';
 
 // Return table based on current users url
 export const getTableData = async (req: Request, res: Response) => {

@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { getTableData } from '../controllers/getTableData.ts';
-import { getSingleEntrepreneur } from '../controllers/getSingleEntrepreneur.ts';
-import { postDeleteFromTable } from '../controllers/delteFromTable.ts';
+import { getTableData } from '../controllers/getTableData.js';
+import { getSingleEntrepreneur } from '../controllers/getSingleEntrepreneur.js';
+import { postDeleteFromTable } from '../controllers/delteFromTable.js';
 
 export const tablePage = Router();
 
