@@ -17,6 +17,7 @@
   box-shadow: 0 2px 10px rgb(217, 217, 217);
   height: 5rem;
   padding: 0 3rem 0 3rem;
+  width: 100%;
 }
 
 #header-links,
@@ -56,7 +57,7 @@ h2 {
 table {
   margin: auto;
   border-spacing: 0;
-  min-width: 1000px;
+  min-width: 90%;
 }
 
 caption {
@@ -136,10 +137,29 @@ form,
   flex-direction: column;
 }
 
+.submit-form-btn {
+  margin-bottom: 1rem;
+  width: clamp(200px, 5vw, 400px);
+  font-weight: bold;
+  color: rgb(62, 104, 184);
+  background-color: aliceblue;
+  border: 1px solid gray;
+  cursor: pointer;
+  border-radius: 5px;
+
+  transition: 0.2s transform;
+}
+
+.submit-form-btn:hover {
+  transform: scale(1.01);
+}
+
 input,
 select {
   width: 240px;
   height: 2rem;
+  border: none;
+  box-shadow: 0px 0px 3px rgb(155, 155, 155);
 }
 
 .input-group {
@@ -149,11 +169,6 @@ select {
 
 #hq {
   width: 510px;
-}
-
-.del-form {
-  /* display: flex;
-  justify-content: start; */
 }
 
 .delete-btn {
@@ -181,6 +196,7 @@ select {
 
 html {
   height: 100%;
+  width: 100vw;
 }
 
 body {
@@ -190,6 +206,7 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   height: 100%;
+  width: 100vw;
   background-color: rgb(253, 253, 253);
 }
 
@@ -241,4 +258,10 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
+}
+
+@media only screen and (max-width: 968px) {
+  #table-container {
+    max-width: 800px;
+  }
 }

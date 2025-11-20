@@ -109,7 +109,10 @@ async function getNewId(table: string): Promise<number> {
   return Number(rows[0].last_value) + 1;
 }
 
-export async function deleteFromTable(entrepreneurId: string, pass: string) {
+export async function deleteFromTable(
+  entrepreneurId: string,
+  pass: string
+): Promise<boolean> {
   const id = Number(entrepreneurId);
 
   if (pass === process.env.PASSWORD) {
@@ -136,5 +139,8 @@ export async function deleteFromTable(entrepreneurId: string, pass: string) {
     `,
       [entrepreneurId]
     );
+    return true;
+  } else {
+    return false;
   }
 }
