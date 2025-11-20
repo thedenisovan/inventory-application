@@ -115,7 +115,7 @@ tbody tr:hover {
   color: red;
 }
 
-form {
+.new-pers-form {
   align-items: center;
   background-color: white;
   max-width: 700px;
@@ -149,6 +149,15 @@ select {
 
 #hq {
   width: 510px;
+}
+
+.del-form {
+  /* display: flex;
+  justify-content: start; */
+}
+
+.delete-btn {
+  text-align: left;
 }
 
 /* 1. Use a more-intuitive box-sizing model */

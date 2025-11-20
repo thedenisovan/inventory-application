@@ -1,5 +1,6 @@
 import { pool } from './pool.ts';
 import type { QueryResultRow } from 'pg';
+import 'dotenv/config';
 
 export interface PostData {
   firstName: string;
@@ -86,8 +87,8 @@ async function postInToBusiness(body: PostData, newIdx: number) {
 }
 
 export async function postRelationTable(body: PostData) {
-  const entrepreneurIdx = await getNewId('entrepreneur');
-  const businessIdx = await getNewId('business');
+  const entrepreneurIdx = await getNewId('entrepeneur_id_seq');
+  const businessIdx = await getNewId('buisness_id_seq');
 
   await postInToEntrepreneur(body, businessIdx);
   await postInToBusiness(body, entrepreneurIdx);
@@ -103,35 +104,37 @@ export async function postRelationTable(body: PostData) {
 
 // Gets id of new business and entrepreneur to insert them in relationship table
 async function getNewId(table: string): Promise<number> {
-  const { rows } = await pool.query(`SELECT MAX(id) AS count FROM ${table}`);
+  const { rows } = await pool.query(`SELECT * FROM ${table}`);
 
-  return Number(rows[0].count + 1);
+  return Number(rows[0].last_value) + 1;
 }
 
-export async function deleteFromTable(entrepreneurId: string) {
+export async function deleteFromTable(entrepreneurId: string, pass: string) {
   const id = Number(entrepreneurId);
 
-  await pool.query(
-    `
+  if (pass === process.env.PASSWORD) {
+    await pool.query(
+      `
       DELETE FROM entrepreneur
       WHERE id = $1
     `,
-    [id]
-  );
+      [id]
+    );
 
-  await pool.query(
-    `
+    await pool.query(
+      `
       DELETE FROM business
       WHERE entrepreneur_id = $1
     `,
-    [entrepreneurId]
-  );
+      [entrepreneurId]
+    );
 
-  await pool.query(
-    `
+    await pool.query(
+      `
       DELETE FROM role
       WHERE entrepreneur_id = $1
     `,
-    [entrepreneurId]
-  );
+      [entrepreneurId]
+    );
+  }
 }

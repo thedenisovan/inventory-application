@@ -4,6 +4,20 @@
   <title>Founder Hub</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="/style/style.css" />
+  <script>
+    // Prompts user for password to delete row from table. 
+    document.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('delete-btn')) return;
+
+      const form = e.target.closest('.del-form');
+      const pass = prompt('Enter admin password to delete this data.');
+
+      if (!pass) return; // user cancelled
+
+      form.querySelector('[name="pass"]').value = pass;
+      form.submit();
+    });
+</script>
   <body>
     <%- include('./partials/header') %>
     <div id="table-container">
@@ -41,8 +55,9 @@
               </td>
               <td>
                 <button class="edit-btn">Edit</button>
-                <form action="<%= id %>/delete" method="post">
-                  <button type="submit" class="delete-btn" onclick="hi()">Delete</button>
+                <form class="del-form" action="<%= id %>/delete" method="post">
+                  <input type="hidden" name="pass" />
+                  <button type="button" class="delete-btn">Delete</button>
                 </form>
               </td>
             </tr>
@@ -51,18 +66,4 @@
       </table>
     </div>
   </body>
-  <script>
-    import 'dotenv/config';
-    
-    function hi() {
-      const promptReturn = prompt('Please enter password to delete his row.');
-
-      if (promptReturn === process.env.PASSWORD) {
-        alert('You have deleted this row.')
-      } else {
-        alert('Wrong password.')
-      }
-    }
-
-  </script>
 </html>
