@@ -12,7 +12,6 @@ It also uses the following packages:
 
 - Full CRUD operations for all tables on the site.  
 - Automatic creation of relationship rows when adding a new entrepreneur or business, showing the entrepreneur's role.  
-- Data is stored on my Render database (free tier), which will reset on 14.12.25.
 
 ## Preview the Web App
 You can live preview the website here: [Inventory Application](https://inventory-application-y7nz.onrender.com/)  
